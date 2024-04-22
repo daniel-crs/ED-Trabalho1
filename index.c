@@ -8,7 +8,7 @@
 
 typedef struct {
     char nome[MAX_NOME];
-    char telefone[15]; // considerando o formato fixo (DDD) NNNN-NNNN
+    char telefone[15];
     char curso[MAX_NOME];
     float notas[MAX_NOTAS];
     int num_notas;
@@ -17,6 +17,8 @@ typedef struct {
 void calcularSituacao(Aluno aluno, float *media, char *situacao);
 
 int main(void) {
+	char buffer[MAX_BUFFER];
+	
 	FILE *entrada = fopen("DadosEntrada.csv", "r");
     FILE *saida = fopen("SituacaoFinal.csv", "w");
 
@@ -25,7 +27,6 @@ int main(void) {
         return 1;
     }
 
-    char buffer[MAX_BUFFER];
     while (fgets(buffer, MAX_BUFFER, entrada) != NULL) {
         Aluno aluno;
         char *token = strtok(buffer, ",");
